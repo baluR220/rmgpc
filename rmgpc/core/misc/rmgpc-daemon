@@ -1,0 +1,4 @@
+#sleep 5
+
+/var/www/venv/bin/python /home/pi/rmgpc-dev/rmgpc/core/misc/set_mode.py
+/var/www/venv/bin/python /home/pi/rmgpc-dev/rmgpc/core/misc/start_auto.py

@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-20 00:10+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: core/views.py:65 core/views.py:129 templates/home.html:51
+#: templates/home.html:146 templates/home.html:179 templates/home.html:201
+#: templates/home.html:218
+msgid "Low"
+msgstr "Низкий"
+
+#: core/views.py:67 core/views.py:131 templates/home.html:52
+#: templates/home.html:147 templates/home.html:181 templates/home.html:203
+#: templates/home.html:220
+msgid "High"
+msgstr "Высокий"
+
+#: core/views.py:69
+#, python-format
+msgid ""
+"Sequence \"%(name)s\" active when            %(state)s on pin \"%(pin)s\" is "
+"already in manual!"
+msgstr ""
+"Последовательность \"%(name)s\", активная когда         на пине \"%(pin)s\" "
+"%(state)s уровень, уже используется!"
+
+#: core/views.py:76
+#, python-format
+msgid "Sequence \"%s\" is already in                 manual!"
+msgstr "Последовательность \"%s\" уже используется!"
+
+#: core/views.py:132
+#, fuzzy, python-format
+#| msgid ""
+#| "Sequence \"%(name)s\" waiting for        \"%(state)s\" on pin \"%(pin)s"
+#| "\" (relief = %(relief)s) is already in         auto!"
+msgid ""
+"Sequence \"%(name)s\" waiting for        %(state)s on pin \"%(pin)s"
+"\" (relief = %(relief)s) is already in         auto!"
+msgstr ""
+"Последовательность \"%(name)s\", ожидающая        \"%(state)s\" уровень на "
+"пине \"%(pin)s\" (relief = %(relief)s), уже используется!"
+
+#: core/views.py:234
+msgid "Name or content is empty!"
+msgstr "Имя и содержимое должны быть не пустыми!"
+
+#: core/views.py:242
+#, python-format
+msgid "Name %s is already in use!"
+msgstr "Имя %s уже используется!"
+
+#: core/views.py:251
+#, python-format
+msgid "Mistake detected! %s"
+msgstr "Обнаружена ошибка! %s"
+
+#: core/views.py:274
+#, python-format
+msgid ""
+"Sequence \"%s\" is used in                     triggers! Delete triggers "
+"first!"
+msgstr ""
+"Последовательность\"%s\" используется в триггерах! Сначала удалите триггеры!"
+
+#: templates/base.html:26
+msgid "Home"
+msgstr "Главная"
+
+#: templates/base.html:30
+msgid "Mode"
+msgstr "Режимы"
+
+#: templates/base.html:33 templates/sequence.html:5
+msgid "Sequences"
+msgstr "Последовательности"
+
+#: templates/base.html:36 templates/settings.html:6
+msgid "Settings"
+msgstr "Настройки"
+
+#: templates/base.html:40
+msgid "Log Out"
+msgstr "Выход"
+
+#: templates/base.html:51
+#, python-format
+msgid "user: %(user)s"
+msgstr "Вы: %(user)s"
+
+#: templates/home.html:4
+msgid "Triggers"
+msgstr "Триггеры"
+
+#: templates/home.html:5
+msgid "Manual execution"
+msgstr "Ручное выполнение"
+
+#: templates/home.html:7 templates/home.html:107 templates/sequence.html:6
+msgid "Add"
+msgstr "Добавить"
+
+#: templates/home.html:8 templates/home.html:108 templates/sequence.html:7
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/home.html:26 templates/home.html:128 templates/sequence.html:59
+msgid "Choose sequence:"
+msgstr "Выберите последовательность:"
+
+#: templates/home.html:34
+msgid "Active always:"
+msgstr "Активно всегда:"
+
+#: templates/home.html:36
+msgid "True"
+msgstr "Да"
+
+#: templates/home.html:37
+msgid "False"
+msgstr "Нет"
+
+#: templates/home.html:41 templates/home.html:136
+msgid "Choose input pin:"
+msgstr "Выберите пин-вход:"
+
+#: templates/home.html:49 templates/home.html:144
+msgid "Choose input state:"
+msgstr "Выберите уровень пина:"
+
+#: templates/home.html:58 templates/home.html:81 templates/home.html:162
+#: templates/home.html:189
+msgid "No sequences found. Add new sequence first."
+msgstr "Последовательности не найдены. Добавьте новые последовательности"
+
+#: templates/home.html:70 templates/home.html:174
+msgid "Choose triggers:"
+msgstr "Выберите триггеры"
+
+#: templates/home.html:87
+msgid "Click to execute"
+msgstr "Нажмите, чтобы выполнить"
+
+#: templates/home.html:102
+msgid "No manual triggers. Add new manual trigger first."
+msgstr "Нет ручных триггеров. Добавьте новые ручные триггеры."
+
+#: templates/home.html:105
+msgid "Waiting for input"
+msgstr "Автоматическое выполнение"
+
+#: templates/home.html:113 templates/sequence.html:19
+#, python-format
+msgid "%(error)s"
+msgstr "%(error)s"
+
+#: templates/home.html:151
+msgid "On relief do:"
+msgstr "При восстановлении выполнить:"
+
+#: templates/home.html:153 templates/home.html:224
+msgid "Nothing"
+msgstr "Ничего"
+
+#: templates/home.html:182 templates/home.html:205
+msgid "on pin"
+msgstr "на пине"
+
+#: templates/home.html:195
+msgid "Click to view details"
+msgstr "Нажмите для подробностей."
+
+#: templates/home.html:211
+#, fuzzy, python-format
+#| msgid "Triggers"
+msgid "Triggers: %(auto)s"
+msgstr "Запускает:  %(auto)s"
+
+#: templates/home.html:214
+#, python-format
+msgid "When: pin %(auto.trigger_pin)s in"
+msgstr "Когда пин %(auto.trigger_pin)s имеет"
+
+#: templates/home.html:221
+msgid "state"
+msgstr "уровень"
+
+#: templates/home.html:222
+msgid "On relief: "
+msgstr "При восстановлении: "
+
+#: templates/home.html:226
+#, python-format
+msgid "%(relief)s"
+msgstr "%(relief)s"
+
+#: templates/home.html:236
+msgid "No auto triggers. Add new auto trigger first."
+msgstr "Нет автоматических триггеров. Добавьте новые автоматические триггеры."
+
+#: templates/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr "Неверное имя или пароль. Попробуйте снова."
+
+#: templates/login.html:14
+msgid "Please login to see this page."
+msgstr "Войдите, чтобы просматривать эту страницу."
+
+#: templates/login.html:24
+msgid "Login"
+msgstr "Вход"
+
+#: templates/mode.html:7
+msgid "Pin mode"
+msgstr "Режимы пинов"
+
+#: templates/mode.html:8
+msgid "Set pin mode to Output or Input"
+msgstr "Установите режимы пинов Выход или Вход"
+
+#: templates/mode.html:21
+msgid "Out"
+msgstr "Вых"
+
+#: templates/mode.html:26
+msgid "In"
+msgstr "Вх"
+
+#: templates/mode.html:31 templates/settings.html:17
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/mode.html:34 templates/sequence.html:86 templates/settings.html:20
+msgid "You don't have permission to view this page."
+msgstr "Недостаточно прав для просмотра данной страницы."
+
+#: templates/sequence.html:33
+msgid ""
+"<p>Example: on 21, off 21, imp 21_3 <br><br> <strong>on 21</strong> - set "
+"pin 21 to <strong>High</strong> state,<br> <strong>off 21</strong> - set pin "
+"21 to <strong>Low</strong> state,<br> <strong>imp 21_3</strong> - set pin 21 "
+"to the state opposite to current state for period of 3 seconds.<br><br> "
+"Separate command from pin with <strong>space</strong> and expression from "
+"another one with <strong>comma</strong>. <br> </p>"
+msgstr ""
+"<p>Пример: on 21, off 21, imp 21_3 <br><br> <strong>on 21</strong> - "
+"установить пин 21 на <strong>Высокий</strong> уровень,<br> <strong>off 21</"
+"strong> - установить пин 21 на <strong>Низкий</strong> уровень,<br> "
+"<strong>imp 21_3</strong> - установить пин 21 на уровень, противоположный "
+"текущему на 3 секунды.<br><br> Разделяйте команды и пины с помощью "
+"<strong>пробела</strong> и выражения друг от друга с помощью "
+"<strong>запятой</strong>. <br> </p>"
+
+#: templates/sequence.html:42
+msgid "Name:"
+msgstr "Имя:"
+
+#: templates/sequence.html:44
+msgid "Content:"
+msgstr "Содержимое:"
+
+#: templates/sequence.html:72
+msgid "Saved sequences:"
+msgstr "Сохраненные последовательности"
+
+#: templates/sequence.html:82
+msgid "No sequences."
+msgstr "Нет последовательностей"
+
+#: templates/settings.html:11
+msgid "Language"
+msgstr "Язык"
+
+#~ msgid "Don't use special symbols                         in name! %s"
+#~ msgstr "Не используйте в имени специальные символы! %s"
+
+#, fuzzy
+#~| msgid "Low"
+#~ msgctxt "another form"
+#~ msgid "Low"
+#~ msgstr "Низком"
+
+#, fuzzy
+#~| msgid "High"
+#~ msgctxt "another form"
+#~ msgid "High"
+#~ msgstr "Высоком"
+
+#~ msgid "You don't have permission to view this page"
+#~ msgstr "Недостаточно прав для просмотра данной страницы"
+
+#~ msgid "Choose sequences:"
+#~ msgstr "Выберите последовательности:"
+
+#~ msgid "Pin:"
+#~ msgstr "Пин"

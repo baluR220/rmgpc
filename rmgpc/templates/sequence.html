@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+	{% if user.is_superuser %}	
+		<h2>{% trans "Sequences" %}</h2>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#add_seq" aria-expanded="false" aria-controls="add_seq">{% trans "Add" %}</button>
+		<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#delete_seq" aria-expanded="false" aria-controls="delete_seq">{% trans "Delete" %}</button>
+		<div class="mt-2">
+		{% if error_message_add %}
+		<p class="border border-danger rounded p-2">
+			<strong>
+				{{ error_message_add }}
+			</strong>
+		</p>
+		{% endif %}
+		{% if error_message_delete %}
+		<p class="border border-danger rounded p-2">
+			<strong>
+				{% blocktrans with error=error_message_delete trimmed %}
+				{{ error }}
+				{% endblocktrans %}
+			</strong>
+		</p>
+		{% endif %}
+		</div>
+
+		<!-- Add new sequence collapsable block -->
+		<div class="collapse" id="add_seq">
+		  <div class="card card-body">
+			<form action="{% url 'new_seq' %}" method="post">
+			{% csrf_token %}	
+			{{ form.as_p }}
+			{% blocktrans trimmed %}
+				<p>Example: on 21, off 21, imp 21_3 <br><br>
+					<strong>on 21</strong> - set pin 21 to <strong>High</strong> state,<br>
+					<strong>off 21</strong> - set pin 21 to <strong>Low</strong> state,<br>
+					<strong>imp 21_3</strong> - set pin 21 to the state opposite to current state for period of 3 seconds.<br><br>
+					Separate command from pin with <strong>space</strong> and expression from another one with <strong>comma</strong>. <br>
+				</p>
+				{% endblocktrans %}
+				<div class="form-group">
+					<label for="name">{% trans "Name:" %}</label><br>
+					<input type="text" id="name" name="name" value="{% if placeholder_name %}{{ placeholder_name }}{% endif %}" required><br>
+					<label for="content">{% trans "Content:" %}</label><br>
+					<textarea name="content" id="content" cols="30" rows="10" required>{% if placeholder_content %}{{ placeholder_content }}{% endif %}</textarea>
+				</div>
+				<button type=submit class="btn btn-secondary">OK</button>
+			</form>
+		  </div>
+		</div>
+
+		<!-- Delete sequence collapsable block -->
+		<div class="collapse" id="delete_seq">
+		  <div class="card card-body">
+			<form action="{% url 'delete_seq' %}" method="post">
+			{% csrf_token %}	
+			{{ form.as_p }}
+				<div class="form-group">
+					<p>{% trans "Choose sequence:" %}</p>
+					{% for seq in seq_all %}
+					<div class="form-check">
+			    	<input type="checkbox"  class="form-check-input" id="{{ seq.id }}"  name="{{ seq.id }}">
+			    	<label class="form-check-label" for="{{ seq.id }}">{{ seq.name}}</label>
+			    </div>
+			    {% endfor %}
+			  </div>
+				<button type=submit class="btn btn-secondary">OK</button>
+			</form>
+		  </div>
+		</div>
+
+		<h3>{% trans "Saved sequences:" %}</h3>
+		{% if seq_all %}
+		<div class="container row">
+			{% for seq in seq_all %}
+			<div class="border border-primary border-3 rounded p-2 mr-3 mb-2">
+				<p><strong>{{seq.name}}</strong></p>
+				<p>{{ seq.content }}</p>
+			</div>
+			{% endfor %}
+		{% else %}
+			<p>{% trans "No sequences." %}</p>
+		</div>
+		{% endif %}
+	{% else %}
+	<p>{% trans "You don't have permission to view this page." %}</p>
+	{% endif %}
+{% endblock %}

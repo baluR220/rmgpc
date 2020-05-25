@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-20 00:10+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/views.py:65 core/views.py:129 templates/home.html:51
+#: templates/home.html:146 templates/home.html:179 templates/home.html:201
+#: templates/home.html:218
+msgid "Low"
+msgstr ""
+
+#: core/views.py:67 core/views.py:131 templates/home.html:52
+#: templates/home.html:147 templates/home.html:181 templates/home.html:203
+#: templates/home.html:220
+msgid "High"
+msgstr ""
+
+#: core/views.py:69
+#, python-format
+msgid ""
+"Sequence \"%(name)s\" active when            %(state)s on pin \"%(pin)s\" is "
+"already in manual!"
+msgstr ""
+
+#: core/views.py:76
+#, python-format
+msgid "Sequence \"%s\" is already in                 manual!"
+msgstr ""
+
+#: core/views.py:132
+#, python-format
+msgid ""
+"Sequence \"%(name)s\" waiting for        %(state)s on pin \"%(pin)s"
+"\" (relief = %(relief)s) is already in         auto!"
+msgstr ""
+
+#: core/views.py:234
+msgid "Name or content is empty!"
+msgstr ""
+
+#: core/views.py:242
+#, python-format
+msgid "Name %s is already in use!"
+msgstr ""
+
+#: core/views.py:251
+#, python-format
+msgid "Mistake detected! %s"
+msgstr ""
+
+#: core/views.py:274
+#, python-format
+msgid ""
+"Sequence \"%s\" is used in                     triggers! Delete triggers "
+"first!"
+msgstr ""
+
+#: templates/base.html:26
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:30
+msgid "Mode"
+msgstr ""
+
+#: templates/base.html:33 templates/sequence.html:5
+msgid "Sequences"
+msgstr ""
+
+#: templates/base.html:36 templates/settings.html:6
+msgid "Settings"
+msgstr ""
+
+#: templates/base.html:40
+msgid "Log Out"
+msgstr ""
+
+#: templates/base.html:51
+#, python-format
+msgid "user: %(user)s"
+msgstr ""
+
+#: templates/home.html:4
+msgid "Triggers"
+msgstr ""
+
+#: templates/home.html:5
+msgid "Manual execution"
+msgstr ""
+
+#: templates/home.html:7 templates/home.html:107 templates/sequence.html:6
+msgid "Add"
+msgstr ""
+
+#: templates/home.html:8 templates/home.html:108 templates/sequence.html:7
+msgid "Delete"
+msgstr ""
+
+#: templates/home.html:26 templates/home.html:128 templates/sequence.html:59
+msgid "Choose sequence:"
+msgstr ""
+
+#: templates/home.html:34
+msgid "Active always:"
+msgstr ""
+
+#: templates/home.html:36
+msgid "True"
+msgstr ""
+
+#: templates/home.html:37
+msgid "False"
+msgstr ""
+
+#: templates/home.html:41 templates/home.html:136
+msgid "Choose input pin:"
+msgstr ""
+
+#: templates/home.html:49 templates/home.html:144
+msgid "Choose input state:"
+msgstr ""
+
+#: templates/home.html:58 templates/home.html:81 templates/home.html:162
+#: templates/home.html:189
+msgid "No sequences found. Add new sequence first."
+msgstr ""
+
+#: templates/home.html:70 templates/home.html:174
+msgid "Choose triggers:"
+msgstr ""
+
+#: templates/home.html:87
+msgid "Click to execute"
+msgstr ""
+
+#: templates/home.html:102
+msgid "No manual triggers. Add new manual trigger first."
+msgstr ""
+
+#: templates/home.html:105
+msgid "Waiting for input"
+msgstr ""
+
+#: templates/home.html:113 templates/sequence.html:19
+#, python-format
+msgid "%(error)s"
+msgstr ""
+
+#: templates/home.html:151
+msgid "On relief do:"
+msgstr ""
+
+#: templates/home.html:153 templates/home.html:224
+msgid "Nothing"
+msgstr ""
+
+#: templates/home.html:182 templates/home.html:205
+msgid "on pin"
+msgstr ""
+
+#: templates/home.html:195
+msgid "Click to view details"
+msgstr ""
+
+#: templates/home.html:211
+#, python-format
+msgid "Triggers: %(auto)s"
+msgstr ""
+
+#: templates/home.html:214
+#, python-format
+msgid "When: pin %(auto.trigger_pin)s in"
+msgstr ""
+
+#: templates/home.html:221
+msgid "state"
+msgstr ""
+
+#: templates/home.html:222
+msgid "On relief: "
+msgstr ""
+
+#: templates/home.html:226
+#, python-format
+msgid "%(relief)s"
+msgstr ""
+
+#: templates/home.html:236
+msgid "No auto triggers. Add new auto trigger first."
+msgstr ""
+
+#: templates/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/login.html:14
+msgid "Please login to see this page."
+msgstr ""
+
+#: templates/login.html:24
+msgid "Login"
+msgstr ""
+
+#: templates/mode.html:7
+msgid "Pin mode"
+msgstr ""
+
+#: templates/mode.html:8
+msgid "Set pin mode to Output or Input"
+msgstr ""
+
+#: templates/mode.html:21
+msgid "Out"
+msgstr ""
+
+#: templates/mode.html:26
+msgid "In"
+msgstr ""
+
+#: templates/mode.html:31 templates/settings.html:17
+msgid "Save"
+msgstr ""
+
+#: templates/mode.html:34 templates/sequence.html:86 templates/settings.html:20
+msgid "You don't have permission to view this page."
+msgstr ""
+
+#: templates/sequence.html:33
+msgid ""
+"<p>Example: on 21, off 21, imp 21_3 <br><br> <strong>on 21</strong> - set "
+"pin 21 to <strong>High</strong> state,<br> <strong>off 21</strong> - set pin "
+"21 to <strong>Low</strong> state,<br> <strong>imp 21_3</strong> - set pin 21 "
+"to the state opposite to current state for period of 3 seconds.<br><br> "
+"Separate command from pin with <strong>space</strong> and expression from "
+"another one with <strong>comma</strong>. <br> </p>"
+msgstr ""
+
+#: templates/sequence.html:42
+msgid "Name:"
+msgstr ""
+
+#: templates/sequence.html:44
+msgid "Content:"
+msgstr ""
+
+#: templates/sequence.html:72
+msgid "Saved sequences:"
+msgstr ""
+
+#: templates/sequence.html:82
+msgid "No sequences."
+msgstr ""
+
+#: templates/settings.html:11
+msgid "Language"
+msgstr ""

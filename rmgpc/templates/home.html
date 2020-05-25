@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+	<h2>{% trans "Triggers" %}</h2>
+	<h3>{% trans "Manual execution" %}</h3>
+	{% if user.is_superuser %}
+	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#add_man" aria-expanded="false" aria-controls="add_man">{% trans "Add" %}</button>
+	<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#delete_man" aria-expanded="false" aria-controls="delete_man">{% trans "Delete" %}</button>
+	<div class="mt-2">
+		{% if error_message_man %}
+		<p class="border border-danger rounded p-2">
+			<strong>
+				{{ error_message_man }}
+			</strong>
+		</p>
+		{% endif %}
+	</div>
+
+	<!-- Add new manual trigger collapsable block -->
+	<div class="collapse" id="add_man">
+	  <div class="card card-body">
+		{% if seq_all %}
+		<form action="{% url 'new_manual' %}" method="post">
+		{% csrf_token %}	
+			<div class="form-group">
+				<label for="sequences">{% trans "Choose sequence:" %}</label>
+				<select name="new_manual" id="sequences" class="form-control">
+					{% for seq in seq_all %}
+					<option value="{{ seq.name }}">{{ seq.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="active_always">{% trans "Active always:" %}</label>
+				<select name="active_always" id="active_always" class="form-control">
+					<option value="1">{% trans "True" %}</option>
+					<option value="0">{% trans "False" %}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="active_pin">{% trans "Choose input pin:" %}</label>
+				<select name="active_pin" id="active_pin" class="form-control" disabled>
+					{% for input in pin_input %}
+					<option value="{{ input.pin }}">{{ input.pin }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="active_state">{% trans "Choose input state:" %}</label>
+				<select name="active_state" id="active_state" class="form-control" disabled>
+					<option value="L">{% trans "Low" %}</option>
+					<option value="H">{% trans "High" %}</option>
+				</select>
+			</div>
+			<button type=submit class="btn btn-secondary">OK</button>
+		</form>
+		{% else %}
+		<span>{% trans "No sequences found. Add new sequence first." %}</span>
+		{% endif %}
+	  </div>
+	</div>
+
+	<!-- Delete manual trigger collapsable block -->
+	<div class="collapse" id="delete_man">
+	  <div class="card card-body">
+		{% if seq_all %}
+		<form action="{% url 'delete_man' %}" method="post">
+		{% csrf_token %}	
+			<div class="form-group">
+				<p>{% trans "Choose triggers:" %}</p>
+				{% for man in manual_all %}
+				<div class="form-check">
+		    	<input type="checkbox"  class="form-check-input" id="{{ man.id }}"  name="{{ man.id }}">
+		    	<label class="form-check-label" for="{{ man.id }}">{{ man.name}}</label>
+		    </div>
+		    {% endfor %}
+		  </div>
+			<button type=submit class="btn btn-secondary">OK</button>
+		</form>
+		{% else %}
+		<p>{% trans "No sequences found. Add new sequence first." %}</p>
+		{% endif %}
+	  </div>
+	</div>
+	{% endif %}
+
+	<p>{% trans "Click to execute" %}</p>
+	{% if manual_all %}
+	<div class="row container">
+		{% for man in manual_all %}
+		<div class="mr-3 mb-2">
+			<form method="post" action="{% url 'execute_man' %}">
+			{% csrf_token %}
+				<input type="hidden" name="id" value="{{ man.id }}">
+				<button class="btn btn-success" type="submit" {% if not man.active_now %}disabled{% endif %}>{{ man.name }}</button>
+			</form>
+		</div>
+		{% endfor %}
+	</div>
+	{% else %}
+	<p>{% trans "No manual triggers. Add new manual trigger first." %}</p>
+	{% endif %}
+
+	<h3 class="mt-4">{% trans "Waiting for input" %}</h3>
+	{% if user.is_superuser %}
+	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#add_auto" aria-expanded="false" aria-controls="add_auto">{% trans "Add" %}</button>
+	<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#delete_auto" aria-expanded="false" aria-controls="delete_auto">{% trans "Delete" %}</button>
+	<div class="mt-2">
+	{% if error_message_auto %}
+	<p class="border border-danger rounded p-2">
+		<strong>
+		{% blocktrans with error=error_message_auto trimmed %}
+		{{ error }}
+		{% endblocktrans %}
+		</strong>
+	</p>
+	{% endif %}
+	</div>
+	
+	<!-- Add new auto trigger collapsable block -->
+	<div class="collapse" id="add_auto">
+	  <div class="card card-body">
+		{% if seq_all %}
+		<form action="{% url 'new_auto' %}" method="post">
+		{% csrf_token %}	
+			<div class="form-group">
+				<label for="sequences">{% trans "Choose sequence:" %}</label>
+				<select name="new_auto_name" id="sequences" class="form-control">
+					{% for seq in seq_all %}
+					<option value="{{ seq.name }}">{{ seq.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="pins">{% trans "Choose input pin:" %}</label>
+				<select name="new_auto_pin" id="pins" class="form-control">
+					{% for input in pin_input %}
+					<option value="{{ input.pin }}">{{ input.pin }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="state">{% trans "Choose input state:" %}</label>
+				<select name="new_auto_state" id="state" class="form-control">
+					<option value="L">{% trans "Low" %}</option>
+					<option value="H">{% trans "High" %}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="relief">{% trans "On relief do:" %}</label>
+				<select name="new_auto_relief" id="relief" class="form-control">
+					<option value="no_relief">{% trans "Nothing" %}</option>
+					{% for seq in seq_all %}
+					<option value="{{ seq.name }}">{{ seq.name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<button type=submit class="btn btn-secondary">OK</button>
+		</form>
+		{% else %}
+		<span>{% trans "No sequences found. Add new sequence first." %}</span>
+		{% endif %}
+	  </div>
+	</div>
+
+	<!-- Delete auto trigger collapsable block -->
+	<div class="collapse" id="delete_auto">
+	  <div class="card card-body">
+		{% if seq_all %}
+		<form action="{% url 'delete_auto' %}" method="post">
+		{% csrf_token %}	
+			<div class="form-group">
+				<p>{% trans "Choose triggers:" %}</p>
+				{% for auto in auto_all %}
+				<div class="form-check">
+		    	<input type="checkbox"  class="form-check-input" id="{{ auto.id }}"  name="{{ auto.id }}">
+		    	<label class="form-check-label" for="{{ auto.id }}">{{ auto.name}} {% if auto.trigger_state == 'L' %}
+		    	{% trans "Low" %}
+		    	{% else %}
+		    	{% trans "High" %}
+		    	{% endif %} {% trans "on pin" %} {{ auto.trigger_pin }}</label>
+		    </div>
+		    {% endfor %}
+		  </div>
+			<button type=submit class="btn btn-secondary">OK</button>
+		</form>
+		{% else %}
+		<p>{% trans "No sequences found. Add new sequence first." %}</p>
+		{% endif %}
+	  </div>
+	</div>
+	{% endif %}
+
+	<p>{% trans "Click to view details" %}</p>
+	{% if auto_all %}
+		{% for auto in auto_all %}
+		
+			<button class="mr-3 mb-2 btn btn-secondary" type="button" data-toggle="collapse" data-target="#show_auto_{{ auto.id }}" aria-expanded="false" aria-controls="show_auto_{{ auto.id }}">{{ auto.name }}<br>
+			{% if auto.trigger_state == 'L' %}
+				{% trans "Low" %}
+				{% else %}
+				{% trans "High" %}
+			{% endif %} 
+			{% trans "on pin" %} {{ auto.trigger_pin }}</button>
+		{% endfor %}
+		{% for auto in auto_all %}
+			<div class="collapse mb-4" id="show_auto_{{ auto.id }}">
+			  <div class="card card-body">
+			  	<p>
+			  		{% blocktrans with name=auto.name trimmed %}
+				  	Triggers: {{ auto }}
+				  	{% endblocktrans %} <br>
+				  	{% blocktrans with pin=auto.trigger_pin trimmed %}
+				  	When: pin {{ auto.trigger_pin}} in 
+				  	{% endblocktrans %}
+				  	{% if auto.trigger_state == 'L' %}
+					  	{% trans "Low" %}
+							{% else %}
+							{% trans "High" %}
+						{% endif %} {% trans "state" %}<br>
+						{% trans "On relief: " %}
+						{% if auto.on_relief == 'no_relief' %}
+							{% trans "Nothing" %}
+							{% else %}
+							{% blocktrans with relief=auto.on_relief trimmed %}
+							{{ relief }}
+							{% endblocktrans %}
+						{% endif %}
+					</p>
+			  </div>
+			</div>
+		{% endfor %}
+
+	{% else %}
+	<p>{% trans "No auto triggers. Add new auto trigger first." %}</p>
+	{% endif %}
+
+	<div id='info'></div>
+{% endblock %}

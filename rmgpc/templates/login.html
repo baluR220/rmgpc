@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% language cur_lang %}
+{% if form.errors %}
+<p class="border border-danger rounded p-2">
+	{% trans "Your username and password didn't match. Please try again." %}
+</p>
+{% else %}
+  {% if next %}
+    {% if not user.is_authenticated %}
+    <p class="border border-danger rounded p-2">
+    	{% trans "Please login to see this page." %}
+  	</p>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+  <p>{{ form.username.label_tag }}<br>{{ form.username }}</p>
+  <p>{{ form.password.label_tag }}<br>{{ form.password }}</p>
+  <button class="btn btn-primary" type="submit" value="login">{% trans "Login" %}</button>
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
+{% endlanguage %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+{% if user.is_superuser %}
+	<h2>{% trans "Settings" %}</h2>
+	
+	<form action="{% url 'settings_new' %}" method="post">
+		{% csrf_token %}	
+			<div class="form-group">
+				<label for="set_lang">{% trans "Language" %}</label>
+				<select name="set_lang" id="set_lang" class="form-control">
+					<option value="en"{% if cur_set.lang == "en" %}selected{% endif %}>English</option>
+					<option value="ru"{% if cur_set.lang == "ru" %}selected{% endif %}>Русский</option>
+				</select>
+			</div>
+			<button type=submit class="btn btn-primary">{% trans "Save" %}</button>
+		</form>
+	{% else %}
+	<p>{% trans "You don't have permission to view this page." %}</p>
+	{% endif %}
+{% endblock %}
